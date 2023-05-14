@@ -90,6 +90,10 @@ const failed=(req, res) => {
     res.send("You failed to login");
   }
 
+const check=(req,res)=>{
+    return res.status(402).json({message:"You are logged in"})
+}
+
 //   app.get("/failed", (req, res) => {
 //     try {
 //       req.session.destroy();
@@ -101,4 +105,4 @@ const failed=(req, res) => {
 //   });
 
 
-module.exports={mainPage,adminPortal,isLoggedIn,logout,adminPanel,authAdmin,failed}
+module.exports={mainPage,adminPortal,isLoggedIn,logout,adminPanel,authAdmin,failed,check}

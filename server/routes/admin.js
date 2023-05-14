@@ -14,4 +14,6 @@ router.get('/auth/admin',login.authAdmin)
 
 router.get('/failed',login.failed)
 
+router.get('/check',login.isLoggedIn,login.check)
+
 module.exports = router;
