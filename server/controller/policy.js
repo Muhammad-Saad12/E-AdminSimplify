@@ -11,6 +11,7 @@ const getAllPolicies = async (req, res) => {
   }
 };
 
+
 //get policy by title
 const getPolicyById = async (req, res) => {
   try {

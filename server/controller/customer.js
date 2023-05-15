@@ -127,4 +127,5 @@ const incrementFlagCountByEmail = async (req, res) => {
   };
   
 
+  
 module.exports = {getAllCustomers,getCustomerById,filterCustomersByName,createCustomer,deleteCustomer,deleteUserByEmail,incrementFlagCountByEmail};

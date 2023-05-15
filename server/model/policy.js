@@ -18,3 +18,4 @@ const policy = new mongoose.Schema({
 });
 
 module.exports = mongoose.model("Policy", policy);
+
