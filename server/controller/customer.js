@@ -1,24 +1,24 @@
 const mongoose = require('mongoose');
-const Seller = require("../model/seller");
+const Customer = require("../model/customer");
 
 
 // get all sellers
-const getAllSellers = async (req, res) => {
+const getAllCustomers = async (req, res) => {
   try {
-    const sellers = await Seller.find();
-    res.status(200).json(sellers);
+    const customers = await Customer.find();
+    res.status(200).json(customers);
   } catch (error) {
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
 
 // search by email
-const getSellerById = async (req, res) => {
+const getCustomerById = async (req, res) => {
   try {
     const keyword = req.params.keyword;
-    const seller = await Seller.find({ email: keyword });
-    if (seller) {
-      res.status(200).json(seller);
+    const customer = await Customer.find({ email: keyword });
+    if (customer) {
+      res.status(200).json(customer);
     } else {
       res.status(404).json({ error: "Seller not found" });
     }
@@ -28,13 +28,13 @@ const getSellerById = async (req, res) => {
 };
 
 // filter by name
-const filterSellersByName = async (req, res) => {
+const filterCustomersByName = async (req, res) => {
     try {
       const { name } = req.query;
-      const filteredSellers = await Seller.find({
+      const filteredCustomers = await Customer.find({
         name: { $regex: new RegExp(name, "i") },
       }).sort({ name: 'asc' }); // Sort the results in ascending order based on the name field
-      res.status(200).json(filteredSellers);
+      res.status(200).json(filteredCustomers);
     } catch (error) {
       res.status(500).json({ error: "Internal Server Error" });
     }
@@ -45,34 +45,34 @@ const filterSellersByName = async (req, res) => {
 // add a seller
 
 
-const createSeller = async (req, res) => {
+const createCustomer = async (req, res) => {
   try {
-    const { name, email, password, sellerId, contact, city, province, address,flagCount } = req.body;
+    const { name, email, password, customerId, contact, city, province, address,flagCount } = req.body;
 
-    if (!name || !email || !password || !sellerId || !contact || !city || !province || !address || !flagCount ) {
+    if (!name || !email || !password || !customerId || !contact || !city || !province || !address || !flagCount ) {
         return res.status(401).json({ message: 'Please fill all the fields' });
       }
 
-      const existingSeller = await Seller.findOne({ sellerId });
-      const esistingemail = await Seller.findOne({ email });
+      const existingCustomer = await Customer.findOne({ customerId });
+      const esistingemail = await Customer.findOne({ email });
 
-      if (existingSeller || esistingemail) {
+      if (existingCustomer || esistingemail) {
         return res.status(402).json({ message: 'Seller already exists' });
       }  
 
-    const seller = new Seller({
+      const customer = new Customer({
       name,
       email,
       password,
-      sellerId,
+      customerId,
       contact,
       city,
       province,
       address,
       flagCount,
     });
-    const savedSeller = await seller.save();
-    res.status(201).json(savedSeller);
+    const savedCustomer = await customer.save();
+    res.status(201).json(savedCustomer);
   } catch (error) {
     res.status(500).json({ error: "Internal Server Error" });
   }
@@ -80,13 +80,13 @@ const createSeller = async (req, res) => {
 
 // delete a seller based on id
 
-const deleteSeller = async (req, res) => {
+const deleteCustomer = async (req, res) => {
     try {
-      const deletedSeller = await Seller.findByIdAndDelete(req.params.sellerId);
-      if (deletedSeller) {
-        res.status(200).json({ message: "Seller deleted successfully" });
+      const deletedCustomer = await Seller.findByIdAndDelete(req.params.customerId);
+      if (deletedCustomer) {
+        res.status(200).json({ message: "Customer deleted successfully" });
       } else {
-        res.status(404).json({ error: "Seller not found" });
+        res.status(404).json({ error: "Customer not found" });
       }
     } catch (error) {
       res.status(500).json({ error: "Internal Server Error" });
@@ -99,7 +99,7 @@ const deleteSeller = async (req, res) => {
 const deleteUserByEmail = async (req, res) => {
     try {
       const email = req.params.email;
-      const deletedUser = await Seller.findOneAndDelete({ email });
+      const deletedUser = await Customer.findOneAndDelete({ email });
       if (deletedUser) {
         res.status(200).json({ message: "User deleted successfully" });
       } else {
@@ -115,16 +115,16 @@ const deleteUserByEmail = async (req, res) => {
 const incrementFlagCountByEmail = async (req, res) => {
     try {
       const { email } = req.params;
-      const seller = await Seller.findOneAndUpdate(
+      const customer = await Customer.findOneAndUpdate(
         { email },
         { $inc: { flagCount: 1 } },
         { new: true }
       );
-      res.status(200).json(seller);
+      res.status(200).json(customer);
     } catch (error) {
       res.status(500).json({ error: "Internal Server Error" });
     }
   };
   
 
-module.exports = {getAllSellers,getSellerById,filterSellersByName,createSeller,deleteSeller,deleteUserByEmail,incrementFlagCountByEmail};
+module.exports = {getAllCustomers,getCustomerById,filterCustomersByName,createCustomer,deleteCustomer,deleteUserByEmail,incrementFlagCountByEmail};

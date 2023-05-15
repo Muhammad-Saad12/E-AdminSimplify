@@ -22,6 +22,7 @@ app.use(express.json());
 const router=require('./routes/admin');
 const policyRouter=require('./routes/policy');
 const sellerRouter=require('./routes/seller');
+const Customer = require("./routes/customer");
 
 
 app.use(cors());
@@ -50,6 +51,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(router);
 app.use(policyRouter);
 app.use(sellerRouter);
+app.use(Customer);
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);
