@@ -23,6 +23,7 @@ const router=require('./routes/admin');
 const policyRouter=require('./routes/policy');
 const sellerRouter=require('./routes/seller');
 const Customer = require("./routes/customer");
+const Order=require('./routes/order');
 
 
 app.use(cors());
@@ -52,6 +53,7 @@ app.use(router);
 app.use(policyRouter);
 app.use(sellerRouter);
 app.use(Customer);
+app.use(Order);
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);

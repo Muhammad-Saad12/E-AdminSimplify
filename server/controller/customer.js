@@ -42,7 +42,7 @@ const filterCustomersByName = async (req, res) => {
   
   
 
-// add a seller
+// add a customer
 
 
 const createCustomer = async (req, res) => {
