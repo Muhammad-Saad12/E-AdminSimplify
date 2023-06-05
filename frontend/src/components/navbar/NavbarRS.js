@@ -37,9 +37,10 @@ const NavbarRS = () => {
         <Nav.Item >Home</Nav.Item>
         <Nav.Item onClick={handleSubmit}>Sellers</Nav.Item>
         <Nav.Item>Customers</Nav.Item>
+        <Nav.Item>Policy</Nav.Item>
         </Nav>
         <Nav pullRight>
-        <Nav.Item>Settings</Nav.Item>
+        <Nav.Item></Nav.Item>
         <Nav.Item></Nav.Item>
         </Nav>
     </Navbar>

@@ -56,6 +56,11 @@ const Dashboard = () => {
     
     navigate("/Orders");
   }
+  const handlePolicy = (e) => { 
+    e.preventDefault();
+    
+    navigate("/Policy");
+  }
 
   return (
     <div data-testid = "dashboard">
@@ -80,6 +85,9 @@ const Dashboard = () => {
                   </Grid>
                   <Grid item xs={12} marginBottom={"3rem"} onClick={handleSubmitToOrders}>
                     <CardMUI title="Orders" img= {require('../../assets/order.png')}  />
+                  </Grid>
+                  <Grid item xs={12} marginBottom={"3rem"} onClick={handlePolicy}>
+                    <CardMUI title="Policy" />
                   </Grid>
                 </Grid>
               </Grid>

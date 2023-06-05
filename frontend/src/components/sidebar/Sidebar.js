@@ -45,6 +45,12 @@ const Sidebar = () => {
     navigate("/Profile");
   }
 
+  const handlePolicy = (e) => { 
+    e.preventDefault();
+    
+    navigate("/Policy");
+  }
+
 
   return (
     <div data-testid="sidebar">
@@ -89,6 +95,11 @@ const Sidebar = () => {
             <ListItem disablePadding>
               <ListItemButton>
                 <ListItemText primary= {"Orders"} onClick= {handleSubmitToOrders} />
+              </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding>
+              <ListItemButton>
+                <ListItemText primary= {"Policy"} onClick= {handlePolicy}/>
               </ListItemButton>
             </ListItem>
           </List>
