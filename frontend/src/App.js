@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Login, Dashboard, Sellers, SellerEdit, Landingpage, Profile, LoginForm, ProfileMUI, SellerMain, SellerEditMUI, Customer, CustomerEdit, Orders, OrderProgress,Policy,PolicyEdit } from './pages';
+import { Login, Dashboard, Sellers, SellerEdit, Landingpage, Profile, LoginForm, ProfileMUI, SellerMain, SellerEditMUI, Customer, CustomerEdit, Orders, OrderProgress,Policy,PolicyEdit,AddPolicy,Analytics } from './pages';
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 
@@ -27,8 +27,13 @@ function App() {
         <Route path="/CustomerEdit" element={<CustomerEdit /> } />
         <Route path="/Orders" element={<Orders /> } />
         <Route path="/OrdersProgress" element={<OrderProgress /> } />
+        {/* Policy */}
         <Route path="/Policy" element={<Policy /> } />
         <Route path="/PolicyEdit/:policyId" element={<PolicyEdit /> } />
+        <Route path="/create-policy" element={<AddPolicy /> } />
+        {/* Analytics */}
+        <Route path="/Analytics" element={<Analytics /> } />
+       
       </Routes>
     </BrowserRouter>
     </div>

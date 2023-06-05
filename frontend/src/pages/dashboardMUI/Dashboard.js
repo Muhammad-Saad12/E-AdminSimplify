@@ -21,6 +21,12 @@ import { ButtonBase, Grid} from "@mui/material";
 import { styled } from '@mui/material/styles';
 import sellerImg from './seller.png'
 import {useNavigate} from 'react-router-dom';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Button from '@mui/material/Button';
+
 
 
 import React from 'react'
@@ -38,6 +44,11 @@ const Img = styled('img')({
 
 const Dashboard = () => {
   const navigate = useNavigate();
+ const handleAnalytics = (e) => {
+    e.preventDefault();
+    
+    navigate("/Orders");
+  }
 
   const handleSubmitToSellers = (e) => { 
     e.preventDefault();
@@ -70,9 +81,28 @@ const Dashboard = () => {
 
         <Box component="main" sx={{ flexGrow: 0.8, margin:5, p: 3 }}>
         <Toolbar />
-        <Typography marginTop={4} marginLeft={3} marginBottom={"5rem"} fontWeight={700} variant="h2" color={"#2E3B55"}>
+        <Typography marginTop={2} marginLeft={3} marginBottom={"5rem"} fontWeight={700} variant="h4" color={"#2E3B55"}>
               Dashboard
         </Typography>
+        {/* <Box>
+        <Card sx={{ maxWidth: 345 }}>
+     
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+         Analytics
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+         {`The amount collected from all fulfilled orders is `}
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <Button size="small"
+        onClick={handleAnalytics}
+        >Orders</Button>
+        <Button size="small">Learn More</Button>
+      </CardActions>
+    </Card>
+        </Box> */}
         
         <Grid container  marginLeft={"4rem"} marginTop={2}>
             <Grid item xs={6}>

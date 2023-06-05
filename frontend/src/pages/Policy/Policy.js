@@ -45,18 +45,28 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 const Policy = () => {
   const [sellers, setsellers] = useState([]);
-  const [search, setSearch] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+  const [search, setSearch] = useState('');
+
   const navigate = useNavigate();
 
-  const handleSubmitEdit = (e) => {
-    navigate("/SellerEditMUI");
-  };
 
-  const handleSubmitDelete = (name) => {
-    axios.delete("http://localhost:5000/sellers/delete", {
-      data: { answer: name },
-    });
-    navigate("../Sellers");
+
+  const handleSubmitAdd = (e) => {
+   
+    navigate("/create-policy");
+  };
+  
+  const handleSubmitDelete = async (policyId) => {
+    try {
+      await axios.delete(`/delete-policy/${policyId}`);
+      console.log('Policy deleted successfully');
+      setsellers((prevSellers) => prevSellers.filter((seller) => seller._id !== policyId));
+      navigate('../Policy'); // Navigate after the delete request is complete
+    } catch (error) {
+      console.error('Failed to delete policy:', error);
+      // Handle error condition (e.g., show error message to the user)
+    }
   };
 
   useEffect(() => {
@@ -72,6 +82,24 @@ const Policy = () => {
         });
     })();
   }, []);
+
+    
+
+  const handleSearch = async () => {
+    try {
+      const response = await axios.get(`http://localhost:3001/get-policy-by-title/${search}`);
+      if (response.status === 200) {
+        setSearchResults(response.data);
+      } else {
+        
+        setSearchResults([]);
+       
+      }
+    } catch (error) {
+      console.error(error);
+      setSearchResults([]);
+    }
+  };
 
   return (
     <div data-testid="seller">
@@ -100,6 +128,7 @@ const Policy = () => {
             <Button
               variant="contained"
               sx={{ backgroundColor: "#2E3B55", marginBottom: "20px" }}
+                onClick={handleSubmitAdd}
             >
               Create New Policy
             </Button>
@@ -107,19 +136,20 @@ const Policy = () => {
               <TextField
                 label="Search"
                 variant="outlined"
-                // value={searchTerm}
+                value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 sx={{ marginRight: "10px" }}
               />
               <Button
                 variant="contained"
                 sx={{ backgroundColor: "#2E3B55" }}
-                // onClick={handleSearch}
+                onClick={handleSearch}
               >
                 Search
               </Button>
             </Box>
           </Box>
+
           <Box component="content" sx={{ margin: 5, p: 3 }}>
             <TableContainer component={Paper}>
               <Table sx={{ minWidth: 700 }} aria-label="customized table">
@@ -137,7 +167,7 @@ const Policy = () => {
                   </TableRow>
                 </TableHead>
 
-                <TableBody>
+                {/* <TableBody>
                   {sellers.map((seller) => (
                     <StyledTableRow key={seller._id}>
                       <StyledTableCell component="th" scope="row">
@@ -167,7 +197,7 @@ const Policy = () => {
                             Edit
                           </Button>
                         </Link>
-                        {/* <Button variant='text' style={{ color:'#2E3B55'}} >edit</Button> */}
+                        
                         <Button
                           variant="text"
                           style={{ color: "red" }}
@@ -178,7 +208,96 @@ const Policy = () => {
                       </StyledTableCell>
                     </StyledTableRow>
                   ))}
-                </TableBody>
+                </TableBody> */}
+
+                <TableBody>
+          {searchResults.length > 0 ? (
+            searchResults.map((seller) => (
+              <StyledTableRow key={seller._id}>
+              <StyledTableCell component="th" scope="row">
+                        {seller._id}
+                      </StyledTableCell>
+                      <StyledTableCell align="center">
+                        {seller.policyTitle}
+                      </StyledTableCell>
+                      <StyledTableCell align="right">
+                        {seller.policyType}
+                      </StyledTableCell>
+                      <StyledTableCell align="center">
+                        {seller.policyDescription}
+                      </StyledTableCell>
+
+                      <StyledTableCell align="center" marginLeft={"1rem"}>
+                        <Link
+                          to={`/PolicyEdit/${seller._id}`}
+                          state={{
+                            id: seller._id,
+                            policyTitle: seller.policyTitle,
+                            policyType: seller.policyType,
+                            policyDescription: seller.policyDescription,
+                          }}
+                        >
+                          <Button variant="text" style={{ color: "#2E3B55" }}>
+                            Edit
+                          </Button>
+                        </Link>
+                        
+                        <Button
+                          variant="text"
+                          style={{ color: "red" }}
+                          onClick={() => handleSubmitDelete(seller._id)}
+                        >
+                          Delete
+                        </Button>
+                      </StyledTableCell>
+
+              </StyledTableRow>
+            ))
+          ) : (
+            sellers.map((seller) => (
+              <StyledTableRow key={seller._id}>
+              <StyledTableCell component="th" scope="row">
+                        {seller._id}
+                      </StyledTableCell>
+                      <StyledTableCell align="center">
+                        {seller.policyTitle}
+                      </StyledTableCell>
+                      <StyledTableCell align="right">
+                        {seller.policyType}
+                      </StyledTableCell>
+                      <StyledTableCell align="center">
+                        {seller.policyDescription}
+                      </StyledTableCell>
+
+                      <StyledTableCell align="center" marginLeft={"1rem"}>
+                        <Link
+                          to={`/PolicyEdit/${seller._id}`}
+                          state={{
+                            id: seller._id,
+                            policyTitle: seller.policyTitle,
+                            policyType: seller.policyType,
+                            policyDescription: seller.policyDescription,
+                          }}
+                        >
+                          <Button variant="text" style={{ color: "#2E3B55" }}>
+                            Edit
+                          </Button>
+                        </Link>
+                        
+                        <Button
+                          variant="text"
+                          style={{ color: "red" }}
+                          onClick={() => handleSubmitDelete(seller._id)}
+                          
+                        >
+                          Delete
+                        </Button>
+                      </StyledTableCell>
+              </StyledTableRow>
+            ))
+          )}
+        </TableBody>
+
               </Table>
             </TableContainer>
           </Box>

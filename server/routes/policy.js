@@ -16,3 +16,4 @@ router.put('/update-policy/:policyId', policy.updatePolicy);
 router.delete('/delete-policy/:policyId', policy.deletePolicy);
 
 module.exports = router;
+

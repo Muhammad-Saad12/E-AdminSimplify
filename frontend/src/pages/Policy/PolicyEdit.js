@@ -34,6 +34,7 @@ const PolicyEdit = () => {
         policyType,
         policyDescription,
       });
+        alert("Policy Updated Successfully");
       navigate("../Policy");
     } catch (error) {
       console.error(error);
@@ -99,17 +100,7 @@ const PolicyEdit = () => {
                     Policy Type
                   </Typography>
                 </Grid>
-                {/* <Grid item xs={12}>
-                                <TextField
-                                id=""
-                                value={policyType}
-                                type="text"
-                                variant = "filled" 
-                                onChange={(e) => setpolicyType(e.target.value)}
-                                
-                                style={{paddingRight: "20px", width: "400px"}}
-                            />
-                            </Grid> */}
+               
                 <Box width="250px"> 
                     <TextField
                     label="Policy Type"
@@ -153,6 +144,7 @@ const PolicyEdit = () => {
                     width: "100px",
                     marginBottom: "3rem",
                     marginTop: "6rem",
+                    backgroundColor: "#2E3B55",
                   }}
                 >
                   Update

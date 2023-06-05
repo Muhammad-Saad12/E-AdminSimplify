@@ -50,6 +50,11 @@ const Sidebar = () => {
     
     navigate("/Policy");
   }
+  const handleAnalytics = (e) => { 
+    e.preventDefault();
+    
+    navigate("/Analytics");
+  }
 
 
   return (
@@ -100,6 +105,11 @@ const Sidebar = () => {
             <ListItem disablePadding>
               <ListItemButton>
                 <ListItemText primary= {"Policy"} onClick= {handlePolicy}/>
+              </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding>
+              <ListItemButton>
+                <ListItemText primary= {"Analytics"} onClick= {handleAnalytics}/>
               </ListItemButton>
             </ListItem>
           </List>
