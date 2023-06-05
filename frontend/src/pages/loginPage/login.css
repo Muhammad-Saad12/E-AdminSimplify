@@ -1,0 +1,35 @@
+
+body{
+    background-color: var(--color-bg);
+}
+
+
+
+.bg-custom {
+    background-color: var(--color-logo_two);
+    color: white;
+}
+
+.sideImg {
+    width: 450px;
+    
+}
+
+form {
+    padding: 2rem;
+    background-color: white;
+}
+
+.card {
+    background-color: white;
+}
+
+.container{
+    margin-top: 8rem;
+    
+}
+
+.btn:hover {
+    background-color: var(--color-accent_two);
+    color: var(--color-text_darkbg);
+}

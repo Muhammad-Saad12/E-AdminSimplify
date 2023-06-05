@@ -48,7 +48,7 @@ mongoose.connection.on("disconnected", () => {
 app.use(express.urlencoded({ extended: false }));
 
 
-
+// All routes
 app.use(router);
 app.use(policyRouter);
 app.use(sellerRouter);
