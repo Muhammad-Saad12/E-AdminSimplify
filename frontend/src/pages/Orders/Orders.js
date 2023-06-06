@@ -56,7 +56,7 @@ const Orders = () => {
   useEffect(() => {
     (async () =>
     {
-      axios.get("http://localhost:5000/Orders/list",  { 
+      axios.get("http://localhost:3001/get-all-orders",  { 
       crossdomain: true 
     }).then(response => {
         setorders(response.data)
@@ -76,7 +76,7 @@ const Orders = () => {
 
             <Box component="main" sx={{ flexGrow: 0.8, margin:5, p: 3 }}>
                 <Toolbar/>
-                <Typography marginTop={6} marginLeft={4} marginBottom={4} fontWeight={700} variant="h2" color={"#2E3B55"}>
+                <Typography marginTop={2} marginLeft={4} marginBottom={4} fontWeight={500} variant="h2" color={"#2E3B55"}>
                 <i>KernelKart</i> Orders
                 </Typography>
 
@@ -85,32 +85,38 @@ const Orders = () => {
                         <Table sx={{ minWidth: 700 }} aria-label="customized table">
                             <TableHead>
                                 <TableRow>
-                                <StyledTableCell >ID</StyledTableCell>
-                                <StyledTableCell align="center">Seller</StyledTableCell>
-                                <StyledTableCell align="center">Customer</StyledTableCell>
-                                <StyledTableCell align="center">Due Date</StyledTableCell>
-                                <StyledTableCell align="center">Actions</StyledTableCell>
+                                <StyledTableCell >Product ID</StyledTableCell>
+                                <StyledTableCell align="center">Order ID</StyledTableCell>
+                                <StyledTableCell align="center">Customer ID</StyledTableCell>
+                                <StyledTableCell align="center">Seller ID</StyledTableCell>
+                                <StyledTableCell align="center">Order Status</StyledTableCell>
+                                <StyledTableCell align="center">Shipping Addres</StyledTableCell>
+                                <StyledTableCell align="center">Order Price</StyledTableCell>
+                                {/* <StyledTableCell align="center">Actions</StyledTableCell> */}
                                 </TableRow>
                             </TableHead>
 
                                 <TableBody>
                                     {orders.map((order) => (
                                     <StyledTableRow key={order.id}>
-                                        <StyledTableCell component="th" scope="row">{order.id}</StyledTableCell>
-                                        <StyledTableCell align="center">{order.SellerUsername}</StyledTableCell>
-                                        <StyledTableCell align="center">{order.CustomerUsername}</StyledTableCell>
-                                        <StyledTableCell align="center">{order.DueDate}</StyledTableCell>
+                                        <StyledTableCell component="th" scope="row">{order.productID}</StyledTableCell>
+                                        <StyledTableCell align="center">{order.orderId}</StyledTableCell>
+                                        <StyledTableCell align="center">{order.customerId}</StyledTableCell>
+                                        <StyledTableCell align="center">{order.sellerId}</StyledTableCell>
+                                        <StyledTableCell align="center">{order.orderStatus}</StyledTableCell>
+                                        <StyledTableCell align="center">{order.shippingAddress}</StyledTableCell>
+                                        <StyledTableCell align="center">{order.orderPrice}</StyledTableCell>
                                         {/* <StyledTableCell align="center">{customer.CompanyName}</StyledTableCell> */}
                                         
-                                        <StyledTableCell align="center" marginLeft={"1rem"}>
+                                        {/* <StyledTableCell align="center" marginLeft={"1rem"}>
                                         <Link to= '/OrdersProgress' state={ {orderid :order.id , orderSeller :order.SellerUsername , orderCustomer :order.CustomerUsername 
                                             ,orderDate :order.DueDate ,orderPrice :order.Price, orderProg: order.Progress } }>
                                             <Button variant='text' style={{ color:'#2E3B55'}} >Details</Button>
                                         </Link>
-                                        {/* <Button variant='text' style={{ color:'#2E3B55'}} >edit</Button> */}
+                                        
                                         <p3>| </p3>
                                         <Button variant='text' style={{ color:'red'} } onClick={() => handleSubmitDelete(order.id)}>Delete</Button>
-                                        </StyledTableCell>
+                                        </StyledTableCell> */}
                                     </StyledTableRow>
                                 ))}
                                 </TableBody>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Navbar, Sidebar } from "../../components";
-import { TextField, Button, Select, MenuItem, FormControl, InputLabel,Box } from '@mui/material';
+import { TextField, Button, Select, MenuItem, FormControl, InputLabel,Box, Typography } from '@mui/material';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
@@ -52,6 +52,7 @@ const AddPolicy = () => {
       >
       <Navbar></Navbar>
         <Sidebar></Sidebar>
+        
         <Box
           component="form"
           onSubmit={handleSubmit}
@@ -63,6 +64,7 @@ const AddPolicy = () => {
             marginTop: '10rem',
           }}
         >
+        <Typography variant="h4" sx={{marginLeft:"200px"}}>Create Policy</Typography>
           <TextField
             label="Policy Title"
             value={policyTitle}
