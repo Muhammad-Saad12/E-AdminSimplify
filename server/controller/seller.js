@@ -49,7 +49,7 @@ const createSeller = async (req, res) => {
   try {
     const { name, email, password, sellerId, contact, city, province, address,flagCount } = req.body;
 
-    if (!name || !email || !password || !sellerId || !contact || !city || !province || !address || !flagCount ) {
+    if (!name || !email || !password || !sellerId || !contact || !city || !province || !address  ) {
         return res.status(401).json({ message: 'Please fill all the fields' });
       }
 

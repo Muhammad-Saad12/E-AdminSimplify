@@ -12,4 +12,5 @@ const sellerSchema = mongoose.Schema({
     flagCount : {type: Number, default: 0},
 });
 
+
 module.exports = mongoose.model('Seller', sellerSchema);

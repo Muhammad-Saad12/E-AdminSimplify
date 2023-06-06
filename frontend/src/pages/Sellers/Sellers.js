@@ -43,40 +43,63 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-const Policy = () => {
-  const [policy, setpolicy] = useState([]);
+const Sellers = () => {
+  const [seller, setseller] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
   const [search, setSearch] = useState('');
 
   const navigate = useNavigate();
 
-
+    const handleSort = (e) => {
+        navigate("/SortSellers");
+    }
 
   const handleSubmitAdd = (e) => {
    
-    navigate("/create-policy");
+    navigate("/AddSeller");
   };
   
-  const handleSubmitDelete = async (policyId) => {
+  const handleSubmitDelete = async (email) => {
     try {
-      await axios.delete(`/delete-policy/${policyId}`);
-      console.log('Policy deleted successfully');
-      setpolicy((prevPolicies) => prevPolicies.filter((policy) => policy._id !== policyId));
-      navigate('../Policy'); // Navigate after the delete request is complete
+      await axios.delete(`/delete-seller/${email}`);
+      console.log('Seller deleted successfully');
+      setseller((prevPolicies) => prevPolicies.filter((seller) => seller.email !== email));
+      navigate('../Sellers'); // Navigate after the delete request is complete
     } catch (error) {
-      console.error('Failed to delete policy:', error);
+      console.error('Failed to delete Seller:', error);
+      alert('Failed to delete Seller');
       // Handle error condition (e.g., show error message to the user)
     }
   };
 
+  const handleSubmitFlag = async (email) => {
+    try {
+      await axios.put(`/increment-flag-count/${email}`);
+      console.log('Flag count incremented successfully');
+      setseller((prevSellers) =>
+        prevSellers.map((seller) =>
+          seller.email === email
+            ? { ...seller, flagCount: seller.flagCount + 1 }
+            : seller
+        )
+      );
+    } catch (error) {
+      console.error('Failed to increment flag count:', error);
+      alert('Failed to increment flag count');
+      // Handle error condition (e.g., show error message to the user)
+    }
+  };
+
+
+
   useEffect(() => {
     (async () => {
       axios
-        .get("http://localhost:3001/get-all-policies", {
+        .get("http://localhost:3001/get-all-sellers", {
           crossdomain: true,
         })
         .then((response) => {
-          setpolicy(response.data);
+          setseller(response.data);
           // setText(response.data.text);
           // setAuthor(response.data.author);
         });
@@ -87,7 +110,7 @@ const Policy = () => {
 
   const handleSearch = async () => {
     try {
-      const response = await axios.get(`http://localhost:3001/get-policy-by-title/${search}`);
+      const response = await axios.get(`http://localhost:3001/get-seller-by-email/${search}`);
       if (response.status === 200) {
         setSearchResults(response.data);
       } else {
@@ -116,7 +139,7 @@ const Policy = () => {
             variant="h2"
             color={"#2E3B55"}
           >
-            <i>KernelKart</i> Policies
+            <i>KernelKart</i> Sellers
           </Typography>
           <Box
             sx={{
@@ -130,7 +153,14 @@ const Policy = () => {
               sx={{ backgroundColor: "#2E3B55", marginBottom: "20px" }}
                 onClick={handleSubmitAdd}
             >
-              Create New Policy
+              Create New Seller
+            </Button>
+            <Button
+              variant="contained"
+              sx={{ backgroundColor: "#2E3B55", marginBottom: "20px" }}
+                onClick={handleSort}
+            >
+              Sort all Sellers
             </Button>
             <Box sx={{ display: "flex", alignItems: "center" }}>
               <TextField
@@ -155,14 +185,20 @@ const Policy = () => {
               <Table sx={{ minWidth: 700 }} aria-label="customized table">
                 <TableHead>
                   <TableRow>
-                    <StyledTableCell>Id</StyledTableCell>
+                  <StyledTableCell align="center">Id</StyledTableCell>
+                    <StyledTableCell>Name</StyledTableCell>
                     <StyledTableCell align="center">
-                      Policy Title
+                      Email
                     </StyledTableCell>
-                    <StyledTableCell align="right">Policy Type</StyledTableCell>
+                    <StyledTableCell align="right">Password</StyledTableCell>
                     <StyledTableCell align="center">
-                      Policy Description
+                      Seller Id
                     </StyledTableCell>
+                    <StyledTableCell align="center">Contact</StyledTableCell>
+                    <StyledTableCell align="center">City</StyledTableCell>
+                    <StyledTableCell align="center">Province</StyledTableCell>
+                    <StyledTableCell align="center">Address</StyledTableCell>
+                    <StyledTableCell align="center">Flag Count</StyledTableCell>
                     <StyledTableCell align="center">Actions</StyledTableCell>
                   </TableRow>
                 </TableHead>
@@ -212,23 +248,41 @@ const Policy = () => {
 
                 <TableBody>
           {searchResults.length > 0 ? (
-            searchResults.map((policies) => (
-              <StyledTableRow key={policies._id}>
+            searchResults.map((sellers) => (
+              <StyledTableRow key={sellers._id}>
               <StyledTableCell component="th" scope="row">
-                        {policies._id}
+                        {sellers._id}
                       </StyledTableCell>
                       <StyledTableCell align="center">
-                        {policies.policyTitle}
+                        {sellers.name}
                       </StyledTableCell>
                       <StyledTableCell align="right">
-                        {policies.policyType}
+                        {sellers.email}
                       </StyledTableCell>
                       <StyledTableCell align="center">
-                        {policies.policyDescription}
+                        {sellers.password}
+                      </StyledTableCell>
+                      <StyledTableCell align="center">
+                        {sellers.sellerId}
+                      </StyledTableCell>
+                      <StyledTableCell align="center">
+                        {sellers.contact}
+                      </StyledTableCell>
+                      <StyledTableCell align="center">
+                        {sellers.city}
+                      </StyledTableCell>
+                      <StyledTableCell align="center">
+                        {sellers.province}
+                      </StyledTableCell>
+                      <StyledTableCell align="center">
+                        {sellers.address}
+                      </StyledTableCell>
+                      <StyledTableCell align="center">
+                        {sellers.flagCount}
                       </StyledTableCell>
 
                       <StyledTableCell align="center" marginLeft={"1rem"}>
-                        <Link
+                        {/* <Link
                           to={`/PolicyEdit/${policies._id}`}
                           state={{
                             id: policies._id,
@@ -240,37 +294,63 @@ const Policy = () => {
                           <Button variant="text" style={{ color: "#2E3B55" }}>
                             Edit
                           </Button>
-                        </Link>
+                        </Link> */}
                         
                         <Button
                           variant="text"
                           style={{ color: "red" }}
-                          onClick={() => handleSubmitDelete(policies._id)}
+                          onClick={() => handleSubmitDelete(sellers.email)}
                         >
                           Delete
+                        </Button>
+                        <Button
+                          variant="text"
+                          style={{ color: "#2E3B55" }}
+                          onClick={() => handleSubmitFlag(sellers.email)}
+                        >
+                          Flag
                         </Button>
                       </StyledTableCell>
 
               </StyledTableRow>
             ))
           ) : (
-            policy.map((policies) => (
-              <StyledTableRow key={policies._id}>
+            seller.map((sellers) => (
+                
+              <StyledTableRow key={sellers._id}>
               <StyledTableCell component="th" scope="row">
-                        {policies._id}
+                        {sellers._id}
                       </StyledTableCell>
                       <StyledTableCell align="center">
-                        {policies.policyTitle}
+                        {sellers.name}
                       </StyledTableCell>
                       <StyledTableCell align="right">
-                        {policies.policyType}
+                        {sellers.email}
                       </StyledTableCell>
                       <StyledTableCell align="center">
-                        {policies.policyDescription}
+                        {sellers.password}
+                      </StyledTableCell>
+                      <StyledTableCell align="center">
+                        {sellers.sellerId}
+                      </StyledTableCell>
+                      <StyledTableCell align="center">
+                        {sellers.contact}
+                      </StyledTableCell>
+                      <StyledTableCell align="center">
+                        {sellers.city}
+                      </StyledTableCell>
+                      <StyledTableCell align="center">
+                        {sellers.province}
+                      </StyledTableCell>
+                      <StyledTableCell align="center">
+                        {sellers.address}
+                      </StyledTableCell>
+                      <StyledTableCell align="center">
+                        {sellers.flagCount}
                       </StyledTableCell>
 
                       <StyledTableCell align="center" marginLeft={"1rem"}>
-                        <Link
+                        {/* <Link
                           to={`/PolicyEdit/${policies._id}`}
                           state={{
                             id: policies._id,
@@ -282,18 +362,26 @@ const Policy = () => {
                           <Button variant="text" style={{ color: "#2E3B55" }}>
                             Edit
                           </Button>
-                        </Link>
+                        </Link> */}
                         
                         <Button
                           variant="text"
                           style={{ color: "red" }}
-                          onClick={() => handleSubmitDelete(policies._id)}
+                          onClick={() => handleSubmitDelete(sellers.email)}
                           
                         >
                           Delete
                         </Button>
+                        <Button
+                          variant="text"
+                          style={{ color: "#2E3B55" }}
+                          onClick={() => handleSubmitFlag(sellers.email)}
+                        >
+                          Flag
+                        </Button>
                       </StyledTableCell>
               </StyledTableRow>
+              
             ))
           )}
         </TableBody>
@@ -307,4 +395,4 @@ const Policy = () => {
   );
 };
 
-export default Policy;
+export default Sellers;

@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Login, Dashboard, Sellers, SellerEdit, Landingpage, Profile, LoginForm, ProfileMUI, SellerMain, SellerEditMUI, Customer, CustomerEdit, Orders, OrderProgress,Policy,PolicyEdit,AddPolicy,Analytics } from './pages';
+import { Login, Dashboard,  SellerEdit, Landingpage, Profile, LoginForm, ProfileMUI,  SellerEditMUI, Customer, CustomerEdit, Orders, OrderProgress,Policy,PolicyEdit,AddPolicy,Analytics,Sellers,AddSeller,SortSellers } from './pages';
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 
@@ -20,8 +20,11 @@ function App() {
         <Route path="/" element={<Dashboard /> } />
         <Route path="/login" element={<LoginForm /> } />
         <Route path="/Profile" element={<ProfileMUI /> } />
-        <Route path="/Sellers" element={<SellerMain /> } />
-        <Route path="/SellersEdit" element={<SellerEditMUI /> } />
+        {/* Seller */}
+        <Route path="/Sellers" element={<Sellers /> } />
+        <Route path="/AddSeller" element={<AddSeller /> } />
+        <Route path="/SortSellers" element={<SortSellers /> } />
+        {/* <Route path="/SellersEdit" element={<SellerEditMUI /> } /> */}
         <Route path="/Customers" element={<Customer /> } />
         <Route path="/CustomerEdit" element={<CustomerEdit /> } />
         <Route path="/CustomerEdit" element={<CustomerEdit /> } />
