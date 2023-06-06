@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Login, Dashboard,  SellerEdit, Landingpage, Profile, LoginForm, ProfileMUI,  SellerEditMUI, Customer, CustomerEdit, Orders, OrderProgress,Policy,PolicyEdit,AddPolicy,Analytics,Sellers,AddSeller,SortSellers } from './pages';
+import { Login, Dashboard,  SellerEdit, Landingpage, Profile, LoginForm, ProfileMUI,  SellerEditMUI, Customer, Orders, OrderProgress,Policy,PolicyEdit,AddPolicy,Analytics,Sellers,AddSeller,SortSellers,AddCustomer,SortCustomers } from './pages';
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 
@@ -26,8 +26,10 @@ function App() {
         <Route path="/SortSellers" element={<SortSellers /> } />
         {/* <Route path="/SellersEdit" element={<SellerEditMUI /> } /> */}
         <Route path="/Customers" element={<Customer /> } />
-        <Route path="/CustomerEdit" element={<CustomerEdit /> } />
-        <Route path="/CustomerEdit" element={<CustomerEdit /> } />
+        <Route path="/AddCustomer" element={<AddCustomer /> } />
+        <Route path="/SortCustomers" element={<SortCustomers /> } />
+        {/* <Route path="/CustomerEdit" element={<CustomerEdit /> } /> */}
+        {/* <Route path="/CustomerEdit" element={<CustomerEdit /> } /> */}
         <Route path="/Orders" element={<Orders /> } />
         <Route path="/OrdersProgress" element={<OrderProgress /> } />
         {/* Policy */}

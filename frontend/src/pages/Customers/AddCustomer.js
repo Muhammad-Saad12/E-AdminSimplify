@@ -12,7 +12,7 @@ const AddSeller = () => {
         name: '',
         email: '',
         password: '',
-        sellerId: '',
+        customerId: '',
         contact: '',
         city: '',
         province: '',
@@ -30,12 +30,12 @@ const AddSeller = () => {
       const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-          await axios.post('http://localhost:3001/create-seller', seller);
-          alert('Seller created successfully');
-          navigate('../Sellers')
+          await axios.post('http://localhost:3001/create-customer', seller);
+          alert('Customer created successfully');
+          navigate('../Customers')
           // Handle success, such as displaying a success message or redirecting to another page
         } catch (error) {
-          alert('Failed to create seller:', error);
+          alert('Failed to create customer:', error);
           // Handle error condition (e.g., show error message to the user)
         }
       };
@@ -47,7 +47,7 @@ const AddSeller = () => {
         <Sidebar></Sidebar>
         
         <form onSubmit={handleSubmit}>
-        <Typography variant="h4" sx={{marginLeft:"100px",marginTop:"100px"}}>Create seller</Typography>
+        <Typography variant="h4" sx={{marginLeft:"100px",marginTop:"100px"}}>Create customer</Typography>
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
         <TextField
           label="Name"
@@ -62,7 +62,6 @@ const AddSeller = () => {
           name="email"
           value={seller.email}
           onChange={handleChange}
-          type='email'
           required
         />
         <TextField
@@ -74,9 +73,9 @@ const AddSeller = () => {
           required
         />
         <TextField
-          label="Seller ID"
-          name="sellerId"
-          value={seller.sellerId}
+          label="Customer ID"
+          name="customerId"
+          value={seller.customerId}
           onChange={handleChange}
           required
         />
@@ -105,7 +104,7 @@ const AddSeller = () => {
           onChange={handleChange}
         />
         <Button variant="contained" type="submit" sx={{backgroundColor:"#2E3B55"}}>
-          Create Seller
+          Create Customer
         </Button>
       </Box>
     </form>

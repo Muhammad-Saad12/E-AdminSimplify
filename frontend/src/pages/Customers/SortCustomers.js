@@ -43,27 +43,27 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-const Customer = () => {
-  const [customer, setcustomer] = useState([]);
+const SortCustomers = () => {
+  const [seller, setseller] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
   const [search, setSearch] = useState('');
 
   const navigate = useNavigate();
 
     const handleSort = (e) => {
-        navigate("/SortCustomers");
+        navigate("/SortSellers");
     }
 
   const handleSubmitAdd = (e) => {
    
-    navigate("/AddCustomer");
+    navigate("/AddSeller");
   };
   
   const handleSubmitDelete = async (email) => {
     try {
       await axios.delete(`/delete-customer/${email}`);
       console.log('Customer deleted successfully');
-      setcustomer((prevPolicies) => prevPolicies.filter((customer) => customer.email !== email));
+      setseller((prevPolicies) => prevPolicies.filter((seller) => seller.email !== email));
       navigate('../Customers'); // Navigate after the delete request is complete
     } catch (error) {
       console.error('Failed to delete Customer:', error);
@@ -76,11 +76,11 @@ const Customer = () => {
     try {
       await axios.put(`/increment-customer-flag-count/${email}`);
       console.log('Flag count incremented successfully');
-      setcustomer((prevcustomer) =>
-        prevcustomer.map((customer) =>
-        customer.email === email
-            ? { ...customer, flagCount: customer.flagCount + 1 }
-            : customer
+      setseller((prevSellers) =>
+        prevSellers.map((seller) =>
+          seller.email === email
+            ? { ...seller, flagCount: seller.flagCount + 1 }
+            : seller
         )
       );
     } catch (error) {
@@ -95,11 +95,11 @@ const Customer = () => {
   useEffect(() => {
     (async () => {
       axios
-        .get("http://localhost:3001/get-all-customers", {
+        .get("http://localhost:3001/filter-customers-by-name", {
           crossdomain: true,
         })
         .then((response) => {
-          setcustomer(response.data);
+          setseller(response.data);
           // setText(response.data.text);
           // setAuthor(response.data.author);
         });
@@ -110,7 +110,7 @@ const Customer = () => {
 
   const handleSearch = async () => {
     try {
-      const response = await axios.get(`http://localhost:3001/get-customer-by-email/${search}`);
+      const response = await axios.get(`http://localhost:3001/get-seller-by-email/${search}`);
       if (response.status === 200) {
         setSearchResults(response.data);
       } else {
@@ -153,14 +153,14 @@ const Customer = () => {
               sx={{ backgroundColor: "#2E3B55", marginBottom: "20px" }}
                 onClick={handleSubmitAdd}
             >
-              Create New Customer
+              Create New Seller
             </Button>
             <Button
               variant="contained"
               sx={{ backgroundColor: "#2E3B55", marginBottom: "20px" }}
                 onClick={handleSort}
             >
-              Sort all Customers
+              Sort all Sellers
             </Button>
             <Box sx={{ display: "flex", alignItems: "center" }}>
               <TextField
@@ -248,37 +248,37 @@ const Customer = () => {
 
                 <TableBody>
           {searchResults.length > 0 ? (
-            searchResults.map((customers) => (
-              <StyledTableRow key={customers._id}>
+            searchResults.map((sellers) => (
+              <StyledTableRow key={sellers._id}>
               <StyledTableCell component="th" scope="row">
-                        {customers._id}
+                        {sellers._id}
                       </StyledTableCell>
                       <StyledTableCell align="center">
-                        {customers.name}
+                        {sellers.name}
                       </StyledTableCell>
                       <StyledTableCell align="right">
-                        {customers.email}
+                        {sellers.email}
                       </StyledTableCell>
                       <StyledTableCell align="center">
-                        {customers.password}
+                        {sellers.password}
                       </StyledTableCell>
                       <StyledTableCell align="center">
-                        {customers.customerId}
+                        {sellers.sellerId}
                       </StyledTableCell>
                       <StyledTableCell align="center">
-                        {customers.contact}
+                        {sellers.contact}
                       </StyledTableCell>
                       <StyledTableCell align="center">
-                        {customers.city}
+                        {sellers.city}
                       </StyledTableCell>
                       <StyledTableCell align="center">
-                        {customers.province}
+                        {sellers.province}
                       </StyledTableCell>
                       <StyledTableCell align="center">
-                        {customers.address}
+                        {sellers.address}
                       </StyledTableCell>
                       <StyledTableCell align="center">
-                        {customers.flagCount}
+                        {sellers.flagCount}
                       </StyledTableCell>
 
                       <StyledTableCell align="center" marginLeft={"1rem"}>
@@ -299,14 +299,14 @@ const Customer = () => {
                         <Button
                           variant="text"
                           style={{ color: "red" }}
-                          onClick={() => handleSubmitDelete(customers.email)}
+                          onClick={() => handleSubmitDelete(sellers.email)}
                         >
                           Delete
                         </Button>
                         <Button
                           variant="text"
                           style={{ color: "#2E3B55" }}
-                          onClick={() => handleSubmitFlag(customers.email)}
+                          onClick={() => handleSubmitFlag(sellers.email)}
                         >
                           Flag
                         </Button>
@@ -315,38 +315,38 @@ const Customer = () => {
               </StyledTableRow>
             ))
           ) : (
-            customer.map((customers) => (
+            seller.map((sellers) => (
                 
-              <StyledTableRow key={customers._id}>
+              <StyledTableRow key={sellers._id}>
               <StyledTableCell component="th" scope="row">
-                        {customers._id}
+                        {sellers._id}
                       </StyledTableCell>
                       <StyledTableCell align="center">
-                        {customers.name}
+                        {sellers.name}
                       </StyledTableCell>
                       <StyledTableCell align="right">
-                        {customers.email}
+                        {sellers.email}
                       </StyledTableCell>
                       <StyledTableCell align="center">
-                        {customers.password}
+                        {sellers.password}
                       </StyledTableCell>
                       <StyledTableCell align="center">
-                        {customers.customerId}
+                        {sellers.sellerId}
                       </StyledTableCell>
                       <StyledTableCell align="center">
-                        {customers.contact}
+                        {sellers.contact}
                       </StyledTableCell>
                       <StyledTableCell align="center">
-                        {customers.city}
+                        {sellers.city}
                       </StyledTableCell>
                       <StyledTableCell align="center">
-                        {customers.province}
+                        {sellers.province}
                       </StyledTableCell>
                       <StyledTableCell align="center">
-                        {customers.address}
+                        {sellers.address}
                       </StyledTableCell>
                       <StyledTableCell align="center">
-                        {customers.flagCount}
+                        {sellers.flagCount}
                       </StyledTableCell>
 
                       <StyledTableCell align="center" marginLeft={"1rem"}>
@@ -367,7 +367,7 @@ const Customer = () => {
                         <Button
                           variant="text"
                           style={{ color: "red" }}
-                          onClick={() => handleSubmitDelete(customers.email)}
+                          onClick={() => handleSubmitDelete(sellers.email)}
                           
                         >
                           Delete
@@ -375,7 +375,7 @@ const Customer = () => {
                         <Button
                           variant="text"
                           style={{ color: "#2E3B55" }}
-                          onClick={() => handleSubmitFlag(customers.email)}
+                          onClick={() => handleSubmitFlag(sellers.email)}
                         >
                           Flag
                         </Button>
@@ -395,4 +395,4 @@ const Customer = () => {
   );
 };
 
-export default Customer;
+export default SortCustomers;

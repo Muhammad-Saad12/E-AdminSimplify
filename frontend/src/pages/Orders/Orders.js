@@ -105,7 +105,7 @@ const Orders = () => {
                                         <StyledTableCell align="center">{order.sellerId}</StyledTableCell>
                                         <StyledTableCell align="center">{order.orderStatus}</StyledTableCell>
                                         <StyledTableCell align="center">{order.shippingAddress}</StyledTableCell>
-                                        <StyledTableCell align="center">{order.sellerId}</StyledTableCell>
+                                        <StyledTableCell align="center">{order.orderPrice}</StyledTableCell>
                                         {/* <StyledTableCell align="center">{customer.CompanyName}</StyledTableCell> */}
                                         
                                         {/* <StyledTableCell align="center" marginLeft={"1rem"}>
