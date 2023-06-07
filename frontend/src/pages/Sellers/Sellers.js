@@ -95,7 +95,7 @@ const Sellers = () => {
   useEffect(() => {
     (async () => {
       axios
-        .get("http://localhost:3001/get-all-sellers", {
+        .get("/get-all-sellers", {
           crossdomain: true,
         })
         .then((response) => {
@@ -110,7 +110,7 @@ const Sellers = () => {
 
   const handleSearch = async () => {
     try {
-      const response = await axios.get(`http://localhost:3001/get-seller-by-email/${search}`);
+      const response = await axios.get(`/get-seller-by-email/${search}`);
       if (response.status === 200) {
         setSearchResults(response.data);
       } else {

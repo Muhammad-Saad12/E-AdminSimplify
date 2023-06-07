@@ -30,7 +30,7 @@ const AddSeller = () => {
       const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-          await axios.post('http://localhost:3001/create-customer', seller);
+          await axios.post('/create-customer', seller);
           alert('Customer created successfully');
           navigate('../Customers')
           // Handle success, such as displaying a success message or redirecting to another page

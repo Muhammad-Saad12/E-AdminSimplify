@@ -29,7 +29,7 @@ const PolicyEdit = () => {
     e.preventDefault();
 
     try {
-      await axios.put(`http://localhost:3001/update-policy/${policyId}`, {
+      await axios.put(`/update-policy/${policyId}`, {
         policyTitle,
         policyType,
         policyDescription,

@@ -43,18 +43,12 @@ const Orders = () => {
 
 
 
-  const handleSubmitDelete = (name) => {
-    axios.delete('http://localhost:5000/Orders/delete', 
-        { data: { answer: name } }
-    )
-    navigate('../Orders')
-  };
-
+  
   
   useEffect(() => {
     (async () =>
     {
-      axios.get("http://localhost:3001/get-all-orders",  { 
+      axios.get("/get-all-orders",  { 
       crossdomain: true 
     }).then(response => {
         setorders(response.data)

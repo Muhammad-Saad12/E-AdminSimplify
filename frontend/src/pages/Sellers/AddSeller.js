@@ -31,7 +31,7 @@ const AddSeller = () => {
       const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-          await axios.post('http://localhost:3001/create-seller', seller);
+          await axios.post('/create-seller', seller);
           alert('Seller created successfully');
           navigate('../Sellers')
           // Handle success, such as displaying a success message or redirecting to another page
