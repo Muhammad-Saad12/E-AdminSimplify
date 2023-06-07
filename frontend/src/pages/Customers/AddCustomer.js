@@ -47,8 +47,9 @@ const AddSeller = () => {
         <Sidebar></Sidebar>
         
         <form onSubmit={handleSubmit}>
-        <Typography variant="h4" sx={{marginLeft:"100px",marginTop:"100px"}}>Create customer</Typography>
-      <Box sx={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        
+      <Box sx={{ display: 'flex', flexDirection: 'column', gap: '1rem',marginLeft:"350px"  }}>
+      <Typography variant="h4" sx={{marginLeft:"100px",marginTop:"100px"}}>Create customer</Typography>
         <TextField
           label="Name"
           name="name"

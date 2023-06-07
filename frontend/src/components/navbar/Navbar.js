@@ -46,7 +46,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: 'inherit',
   '& .MuiInputBase-input': {
     padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
+    
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create('width'),
     width: '100%',
@@ -108,7 +108,7 @@ export default function Navbar() {
       onClose={handleMenuClose}
     >
       <MenuItem onClick={handleClickProfile}>Profile</MenuItem>
-      {/* <MenuItem onClick={handleMenuClose}>My account</MenuItem> */}
+     
     </Menu>
   );
 
@@ -128,15 +128,7 @@ export default function Navbar() {
             <img src={logo} onClick={handleClickHome} />
           </Typography>
 
-          {/* <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search> */}
+        
 
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>

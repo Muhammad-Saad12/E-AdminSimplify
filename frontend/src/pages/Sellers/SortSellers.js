@@ -203,48 +203,6 @@ const Sellers = () => {
                   </TableRow>
                 </TableHead>
 
-                {/* <TableBody>
-                  {sellers.map((seller) => (
-                    <StyledTableRow key={seller._id}>
-                      <StyledTableCell component="th" scope="row">
-                        {seller._id}
-                      </StyledTableCell>
-                      <StyledTableCell align="center">
-                        {seller.policyTitle}
-                      </StyledTableCell>
-                      <StyledTableCell align="right">
-                        {seller.policyType}
-                      </StyledTableCell>
-                      <StyledTableCell align="center">
-                        {seller.policyDescription}
-                      </StyledTableCell>
-
-                      <StyledTableCell align="center" marginLeft={"1rem"}>
-                        <Link
-                          to={`/PolicyEdit/${seller._id}`}
-                          state={{
-                            id: seller._id,
-                            policyTitle: seller.policyTitle,
-                            policyType: seller.policyType,
-                            policyDescription: seller.policyDescription,
-                          }}
-                        >
-                          <Button variant="text" style={{ color: "#2E3B55" }}>
-                            Edit
-                          </Button>
-                        </Link>
-                        
-                        <Button
-                          variant="text"
-                          style={{ color: "red" }}
-                          onClick={() => handleSubmitDelete(seller.username)}
-                        >
-                          Delete
-                        </Button>
-                      </StyledTableCell>
-                    </StyledTableRow>
-                  ))}
-                </TableBody> */}
 
                 <TableBody>
           {searchResults.length > 0 ? (
@@ -282,19 +240,7 @@ const Sellers = () => {
                       </StyledTableCell>
 
                       <StyledTableCell align="center" marginLeft={"1rem"}>
-                        {/* <Link
-                          to={`/PolicyEdit/${policies._id}`}
-                          state={{
-                            id: policies._id,
-                            policyTitle: policies.policyTitle,
-                            policyType: policies.policyType,
-                            policyDescription: policies.policyDescription,
-                          }}
-                        >
-                          <Button variant="text" style={{ color: "#2E3B55" }}>
-                            Edit
-                          </Button>
-                        </Link> */}
+                       
                         
                         <Button
                           variant="text"
@@ -350,19 +296,7 @@ const Sellers = () => {
                       </StyledTableCell>
 
                       <StyledTableCell align="center" marginLeft={"1rem"}>
-                        {/* <Link
-                          to={`/PolicyEdit/${policies._id}`}
-                          state={{
-                            id: policies._id,
-                            policyTitle: policies.policyTitle,
-                            policyType: policies.policyType,
-                            policyDescription: policies.policyDescription,
-                          }}
-                        >
-                          <Button variant="text" style={{ color: "#2E3B55" }}>
-                            Edit
-                          </Button>
-                        </Link> */}
+                        
                         
                         <Button
                           variant="text"

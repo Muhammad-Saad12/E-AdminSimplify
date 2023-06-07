@@ -48,6 +48,7 @@ const AddPolicy = () => {
           display: 'flex',
           flexDirection: 'row',
           justifyContent: 'flex-start',
+        
         }}
       >
       <Navbar></Navbar>
@@ -62,6 +63,8 @@ const AddPolicy = () => {
             gap: '1rem',
             width: '700px', // Adjust the width as needed
             marginTop: '10rem',
+            
+            marginLeft:"200px", 
           }}
         >
         <Typography variant="h4" sx={{marginLeft:"200px"}}>Create Policy</Typography>

@@ -41,9 +41,7 @@ const Orders = () => {
   const [orders, setorders] = useState([]);
   const navigate = useNavigate();
 
-//   const handleSubmitEdit = (e) => {
-//     navigate('/CustomerEdit')
-//   };
+
 
   const handleSubmitDelete = (name) => {
     axios.delete('http://localhost:5000/Orders/delete', 
@@ -60,8 +58,7 @@ const Orders = () => {
       crossdomain: true 
     }).then(response => {
         setorders(response.data)
-      // setText(response.data.text);
-      // setAuthor(response.data.author);
+     
     });
       
    })();
@@ -92,7 +89,7 @@ const Orders = () => {
                                 <StyledTableCell align="center">Order Status</StyledTableCell>
                                 <StyledTableCell align="center">Shipping Addres</StyledTableCell>
                                 <StyledTableCell align="center">Order Price</StyledTableCell>
-                                {/* <StyledTableCell align="center">Actions</StyledTableCell> */}
+                                
                                 </TableRow>
                             </TableHead>
 
@@ -106,17 +103,7 @@ const Orders = () => {
                                         <StyledTableCell align="center">{order.orderStatus}</StyledTableCell>
                                         <StyledTableCell align="center">{order.shippingAddress}</StyledTableCell>
                                         <StyledTableCell align="center">{order.orderPrice}</StyledTableCell>
-                                        {/* <StyledTableCell align="center">{customer.CompanyName}</StyledTableCell> */}
                                         
-                                        {/* <StyledTableCell align="center" marginLeft={"1rem"}>
-                                        <Link to= '/OrdersProgress' state={ {orderid :order.id , orderSeller :order.SellerUsername , orderCustomer :order.CustomerUsername 
-                                            ,orderDate :order.DueDate ,orderPrice :order.Price, orderProg: order.Progress } }>
-                                            <Button variant='text' style={{ color:'#2E3B55'}} >Details</Button>
-                                        </Link>
-                                        
-                                        <p3>| </p3>
-                                        <Button variant='text' style={{ color:'red'} } onClick={() => handleSubmitDelete(order.id)}>Delete</Button>
-                                        </StyledTableCell> */}
                                     </StyledTableRow>
                                 ))}
                                 </TableBody>

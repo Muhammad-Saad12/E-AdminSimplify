@@ -62,10 +62,10 @@ const Policy = () => {
       await axios.delete(`/delete-policy/${policyId}`);
       console.log('Policy deleted successfully');
       setpolicy((prevPolicies) => prevPolicies.filter((policy) => policy._id !== policyId));
-      navigate('../Policy'); // Navigate after the delete request is complete
+      navigate('../Policy'); 
     } catch (error) {
       console.error('Failed to delete policy:', error);
-      // Handle error condition (e.g., show error message to the user)
+     
     }
   };
 
@@ -77,8 +77,7 @@ const Policy = () => {
         })
         .then((response) => {
           setpolicy(response.data);
-          // setText(response.data.text);
-          // setAuthor(response.data.author);
+          
         });
     })();
   }, []);

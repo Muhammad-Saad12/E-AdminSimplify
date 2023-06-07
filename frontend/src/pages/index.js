@@ -1,9 +1,7 @@
 export {default as Login} from './loginPage/Login'
-// export {default as Dashboard} from './dashboard/Dashboard'
-// export {default as Sellers} from './Seller/Sellers'
-// export {default as SellerEdit} from './Seller/sellerEdit/SellerEdit'
+
 export {default as Landingpage} from './landingpage/Landingpage'
-export {default as Profile} from './Profile/Profile'
+// export {default as Profile} from './Profile/Profile'
 
 
 
@@ -14,10 +12,9 @@ export {default as Sellers} from './Sellers/Sellers'
 export {default as AddSeller} from './Sellers/AddSeller'
 export {default as Customer} from './Customers/Customer'
 export {default as SortCustomers} from './Customers/SortCustomers'
-// export {default as CustomerEdit} from './Customers/CustomerEdit'
 export {default as AddCustomer} from './Customers/AddCustomer'
 export {default as Orders} from './Orders/Orders'
-export {default as OrderProgress} from './Orders/OrderProgress'
+
 export {default as Policy} from './Policy/Policy'
 export {default as PolicyEdit} from './Policy/PolicyEdit'
 export {default as AddPolicy} from './Policy/AddPolicy'

@@ -3,7 +3,7 @@ import Avatar from '@mui/material/Avatar';
 import {Box, Button, TextField, createTheme, ThemeProvider, Typography, Grid} from "@mui/material";
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
-import pfp from '../Profile/pfp.jpg'
+// import pfp from '../Profile/pfp.jpg'
 import '@fontsource/baloo-thambi-2/400.css';
 
 import axios from "axios";
@@ -17,50 +17,9 @@ import React from 'react'
 
 const ProfileMUI = () => {
   const navigate = useNavigate();
-  const [admin, setadmin] = useState([])
+  
 
-
-  const updateAPIData = async (e) => {
-        
-    e.preventDefault()
-    axios.put('http://localhost:5000/profile/update', {
-        Age,
-        username,
-        password,
-        email
-    })
-    navigate('../profile')
-}
-
-
-  const [name, setname] = useState('');
-  const [Age, setAge] = useState('');
-  const [username, setuser] = useState('');
-  const [password, setpass] = useState('');
-  const [email, setemail] = useState('');
-
-  useEffect(() => {
-      (async () =>
-      {
-        axios.get("http://localhost:5000/profile/get",  { 
-        crossdomain: true 
-      }).then(response => {
-          // setadmin(response.data)
-
-          setname(response.data.name);
-          setAge(response.data.Age);
-          setuser(response.data.username);
-          setpass(response.data.password);
-          setemail(response.data.email);
-        // setText(response.data.text);
-        // setAuthor(response.data.author);
-      }).then(data =>{
-         
-      });
-        
-    })(
-    );
-    },[]);
+  
 
   return (
     <div data-testid = "profile">
@@ -83,12 +42,12 @@ const ProfileMUI = () => {
             >     
             <Grid container margin={"5rem"} >
                 <Grid item xs = {5} >
-                    <Avatar alt="E" src={pfp}
+                    {/* <Avatar alt="E" src={pfp}
                       sx={{ width: 380, height: 380 }}
-                    />
+                    /> */}
                 </Grid>
                 <Grid item xs = {5} marginTop={"6rem"}>
-                <Typography variant="h3"  padding={3} align="left" color="#2E3B55">{name}</Typography>
+                <Typography variant="h3"  padding={3} align="left" color="#2E3B55"></Typography>
                 <Typography variant="h5"  padding={3} align="left" color="#2E3B55"> - Administrator</Typography>
                 </Grid>
             </Grid>
@@ -104,7 +63,7 @@ const ProfileMUI = () => {
                 <Grid item xs={5}>
                 <TextField
                             id=""
-                            value={username}
+                            // value={username}
                             InputProps={{
                               readOnly: true,
                             }}
@@ -123,11 +82,11 @@ const ProfileMUI = () => {
                 <Grid item xs={5}>
                 <TextField
                             id=""
-                            value={password}
+                            // value={password}
                             // label="Username"
                             type="text"
                             variant = "filled"  
-                            onChange={(e) => setpass(e.target.value)}   
+                            // onChange={(e) => setpass(e.target.value)}   
                             style={{paddingRight: "20px", width: "400px", marginTop: "2rem"}}
                         />
                  
@@ -140,11 +99,11 @@ const ProfileMUI = () => {
                 <Grid item xs={5}>
                 <TextField
                             id=""
-                            value={email}
+                            // value={email}
                             // label="Username"
                             type="email"
                             variant = "filled"    
-                            onChange={(e) => setemail(e.target.value)}   
+                            // onChange={(e) => setemail(e.target.value)}   
 
                             style={{paddingRight: "20px", width: "400px" , marginTop: "2rem"}}
                         />
@@ -157,46 +116,16 @@ const ProfileMUI = () => {
                 <Grid item xs={5}>
                 <TextField
                             id=""
-                            value={Age}
+                            // value={Age}
                             // label="Username"
                             type="number"
                             variant = "filled"    
-                            onChange={(e) => setAge(e.target.value)}   
+                            // onChange={(e) => setAge(e.target.value)}   
 
                             style={{paddingRight: "20px", width: "400px" , marginTop: "2rem"}}
                         />
                  
                 </Grid>
-              
-              
-              
-
-                {/* <Grid item xs={6}>
-                    <Typography variant="h6" color="#2E3B55" marginLeft={8} marginTop={4}>Email</Typography>
-                </Grid>
-                <Grid item xs={6}>
-                    <Typography variant="h6" color="#2E3B55" marginLeft={8} marginTop={4}>Age</Typography>
-                </Grid> */}
-
-              {/* <Grid item xs={6}>
-                        <TextField
-                            id=""
-                            // value={"hello"}
-                            // label="Username"
-                            type="email"
-                            variant = "filled"    
-                            style={{paddingRight: "20px", width: "400px", marginLeft: "4rem"}}
-                        />
-              </Grid> 
-              <Grid item xs={6}>
-                        <TextField
-                            id=""
-                            // label="Password"
-                            type="number"
-                            variant = "filled"  
-                            style={{paddingRight: "20px", width: "400px", marginLeft: "4rem", marginBottom: "6rem"}}
-                        />
-              </Grid>  */}
 
 
               <Grid item xs={4.5}>
@@ -205,7 +134,7 @@ const ProfileMUI = () => {
                 <Button variant='contained'
                  margin={5}
                  padding={5} 
-                 onClick = {updateAPIData}
+               
                  style={{ width: "100px", marginBottom: "3rem" , marginTop: "6rem"}}
                  >
                   Update

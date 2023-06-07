@@ -7,17 +7,17 @@ const login=require('../controller/login');
 router.get('/get-all-customers' ,customer.getAllCustomers);
 
 // search by email
-router.get('/get-customer-by-email/:keyword', customer.getCustomerById);
+router.get('/get-customer-by-email/:keyword' , customer.getCustomerById);
 
 // filter by name 
 
-router.get('/filter-customers-by-name', customer.filterCustomersByName);
+router.get('/filter-customers-by-name' , customer.filterCustomersByName);
 
 // add a customer
-router.post('/create-customer', customer.createCustomer);
+router.post('/create-customer' , customer.createCustomer);
 
 // delete a customer 
-router.delete('/delete-customer/:email', customer.deleteUserByEmail);
+router.delete('/delete-customer/:email' , customer.deleteUserByEmail);
 
 // give flag 
 router.put('/increment-customer-flag-count/:email', customer.incrementFlagCountByEmail);

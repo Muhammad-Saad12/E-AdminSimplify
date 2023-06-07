@@ -15,7 +15,7 @@ const CardMUI = (props) => {
           component="img"
           height="170"
           image={props.img}
-          alt="green iguana"
+          alt="Need a pic here"
         />
         <CardContent sx={{ width: 345, background: '#DFF6FF' }}>
           <Typography align='center' marginRight={"1rem"} variant="h4" >

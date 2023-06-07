@@ -4,6 +4,7 @@ const passport = require("passport");
 require("./auth");
 require("dotenv").config();
 const express = require("express");
+const path = require('path');
 const app = express();
 
 app.use(
@@ -24,6 +25,7 @@ const policyRouter=require('./routes/policy');
 const sellerRouter=require('./routes/seller');
 const Customer = require("./routes/customer");
 const Order=require('./routes/order');
+const oauth=require('./routes/oauth');
 
 
 app.use(cors());
@@ -54,6 +56,7 @@ app.use(policyRouter);
 app.use(sellerRouter);
 app.use(Customer);
 app.use(Order);
+app.use(oauth);
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);

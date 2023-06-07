@@ -3,7 +3,8 @@ import { Navbar, Sidebar } from "../../components";
 import { TextField, Button, Select, MenuItem, FormControl, InputLabel,Box, Typography } from '@mui/material';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
-
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
 
 
 const AddSeller = () => {
@@ -47,8 +48,9 @@ const AddSeller = () => {
         <Sidebar></Sidebar>
         
         <form onSubmit={handleSubmit}>
-        <Typography variant="h4" sx={{marginLeft:"100px",marginTop:"100px"}}>Create seller</Typography>
-      <Box sx={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+       
+      <Box sx={{ display: 'flex', flexDirection: 'column', gap: '1rem',marginLeft:"350px" }}>
+      <Typography variant="h4" sx={{marginLeft:"100px",marginTop:"100px"}}>Create seller</Typography>
         <TextField
           label="Name"
           name="name"
