@@ -55,6 +55,10 @@ const Sidebar = () => {
     
     navigate("/Analytics");
   }
+  const handleSubmitToDashboard = (e) => {
+    e.preventDefault();
+    navigate("/");
+  }
 
 
   return (
@@ -65,7 +69,7 @@ const Sidebar = () => {
           width: drawerWidth,
           flexShrink: 0,
           
-          [`& .MuiDrawer-paper`]: { width: drawerWidth, boxSizing: 'border-box' , backgroundColor: "#DFF6FF", },
+          [`& .MuiDrawer-paper`]: { width: drawerWidth, boxSizing: 'border-box' , backgroundColor: "#8fbc8f", },
         }}
       >
         <Toolbar  />
@@ -87,6 +91,11 @@ const Sidebar = () => {
                 </ListItemButton>
               </ListItem>
             ))} */}
+            <ListItem disablePadding>
+              <ListItemButton data-testid = "button">
+                <ListItemText primary= {"Dashboard"} onClick= {handleSubmitToDashboard} />
+              </ListItemButton>
+            </ListItem>
             <ListItem disablePadding>
               <ListItemButton data-testid = "button">
                 <ListItemText primary= {"Sellers"} onClick= {handleSubmitToSellers} />

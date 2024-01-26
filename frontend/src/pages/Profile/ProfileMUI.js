@@ -37,7 +37,7 @@ const ProfileMUI = () => {
            
 
             sx={{
-            background: '#DFF6FF' 
+            background: '#8fbc8f' 
           }}
             >     
             <Grid container margin={"5rem"} >

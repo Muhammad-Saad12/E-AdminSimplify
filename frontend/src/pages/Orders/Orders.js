@@ -17,7 +17,7 @@ import { Link } from 'react-router-dom';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
-      backgroundColor: '#2E3B55',
+      backgroundColor: '#008000',
       color: theme.palette.common.white,
     },
     [`&.${tableCellClasses.body}`]: {
@@ -27,7 +27,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   
   const StyledTableRow = styled(TableRow)(({ theme }) => ({
     '&:nth-of-type(odd)': {
-      backgroundColor: '#DFF6FF',
+      backgroundColor: '#8fbc8f',
     },
     // hide last border
     '&:last-child td, &:last-child th': {
@@ -67,8 +67,8 @@ const Orders = () => {
 
             <Box component="main" sx={{ flexGrow: 0.8, margin:5, p: 3 }}>
                 <Toolbar/>
-                <Typography marginTop={2} marginLeft={4} marginBottom={4} fontWeight={500} variant="h2" color={"#2E3B55"}>
-                <i>KernelKart</i> Orders
+                <Typography marginTop={2} marginLeft={4} marginBottom={4} fontWeight={500} variant="h2" color={"#008000"}>
+                <i>E-Commerce</i> Orders
                 </Typography>
 
                 <Box component="content"  sx={{  margin:5, p: 3 }}>

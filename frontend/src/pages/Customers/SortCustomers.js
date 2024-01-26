@@ -25,7 +25,7 @@ import { Link } from "react-router-dom";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: "#2E3B55",
+    backgroundColor: "#008000",
     color: theme.palette.common.white,
   },
   [`&.${tableCellClasses.body}`]: {
@@ -35,7 +35,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
   "&:nth-of-type(odd)": {
-    backgroundColor: "#DFF6FF",
+    backgroundColor: "#8fbc8f",
   },
   // hide last border
   "&:last-child td, &:last-child th": {
@@ -137,9 +137,9 @@ const SortCustomers = () => {
             marginBottom={3}
             fontWeight={500}
             variant="h2"
-            color={"#2E3B55"}
+            color={"#008000"}
           >
-            <i>KernelKart</i> Customers
+            <i>E-Commerce</i> Customers
           </Typography>
           <Box
             sx={{
@@ -150,14 +150,14 @@ const SortCustomers = () => {
           >
             <Button
               variant="contained"
-              sx={{ backgroundColor: "#2E3B55", marginBottom: "20px" }}
+              sx={{ backgroundColor: "#8fbc8f", marginBottom: "20px" }}
                 onClick={handleSubmitAdd}
             >
               Create New Seller
             </Button>
             <Button
               variant="contained"
-              sx={{ backgroundColor: "#2E3B55", marginBottom: "20px" }}
+              sx={{ backgroundColor: "#8fbc8f", marginBottom: "20px" }}
                 onClick={handleSort}
             >
               Sort all Sellers
@@ -172,7 +172,7 @@ const SortCustomers = () => {
               />
               <Button
                 variant="contained"
-                sx={{ backgroundColor: "#2E3B55" }}
+                sx={{ backgroundColor: "#8fbc8f" }}
                 onClick={handleSearch}
               >
                 Search

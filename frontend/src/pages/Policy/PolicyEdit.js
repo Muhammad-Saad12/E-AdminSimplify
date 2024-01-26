@@ -69,7 +69,7 @@ const PolicyEdit = () => {
             marginBottom={3}
             fontWeight={700}
             variant="h2"
-            color={"#2E3B55"}
+            color={"#008000"}
           >
             Policy Edit
           </Typography>
@@ -78,7 +78,7 @@ const PolicyEdit = () => {
             <Grid container margin={"2rem"}>
               <Grid conatainer xs={6}>
                 <Grid item xs={12} marginBottom={"1rem"}>
-                  <Typography variant="h5" color="#2E3B55" marginTop={2}>
+                  <Typography variant="h5" color="#008000" marginTop={2}>
                     Policy Title
                   </Typography>
                 </Grid>
@@ -96,7 +96,7 @@ const PolicyEdit = () => {
 
               <Grid conatainer xs={4} marginLeft={"2rem"}>
                 <Grid item xs={12} marginBottom={"1rem"}>
-                  <Typography variant="h5" color="#2E3B55" marginTop={2}>
+                  <Typography variant="h5" color="#008000" marginTop={2}>
                     Policy Type
                   </Typography>
                 </Grid>
@@ -117,7 +117,7 @@ const PolicyEdit = () => {
 
               <Grid conatainer xs={6} marginTop={"5rem"}>
                 <Grid item xs={12} marginBottom={"1rem"}>
-                  <Typography variant="h5" color="#2E3B55" marginTop={2}>
+                  <Typography variant="h5" color="#008000" marginTop={2}>
                     Policy Description
                   </Typography>
                 </Grid>
@@ -144,7 +144,7 @@ const PolicyEdit = () => {
                     width: "100px",
                     marginBottom: "3rem",
                     marginTop: "6rem",
-                    backgroundColor: "#2E3B55",
+                    backgroundColor: "#8fbc8f",
                   }}
                 >
                   Update

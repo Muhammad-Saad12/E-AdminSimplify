@@ -31,7 +31,7 @@ const NavbarRS = () => {
   return (
         <Navbar>
         <Navbar.Brand href="#"></Navbar.Brand>
-        <Navbar.Brand href="#">KERNELKART</Navbar.Brand>
+        <Navbar.Brand href="#"></Navbar.Brand>
         <Nav>
         <Nav.Item ></Nav.Item>
         <Nav.Item >Home</Nav.Item>

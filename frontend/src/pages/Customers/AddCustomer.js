@@ -19,13 +19,50 @@ const AddSeller = () => {
         address: '',
       });
     
+      // const handleChange = (e) => {
+      //   const { name, value } = e.target;
+      //   setSeller((prevSeller) => ({
+      //     ...prevSeller,
+      //     [name]: value,
+      //   }));
+      // };
+
       const handleChange = (e) => {
         const { name, value } = e.target;
+        let updatedValue = value;
+      
+        switch (name) {
+          case "name":
+            // Remove any non-alphabetic characters from the name
+            updatedValue = value.replace(/[^A-Za-z]/g, "");
+            break;
+          case "customerId":
+            // Remove any non-digit characters from the customerId
+            updatedValue = value.replace(/\D/g, "");
+            break;
+          case "contact":
+            // Remove any non-digit characters from the contact
+            updatedValue = value.replace(/\D/g, "");
+            break;
+          case "city":
+            updatedValue = value.replace(/[^A-Za-z]/g, "");
+            break;
+          case "province":
+            // Remove any non-word characters from the city and province
+            updatedValue = value.replace(/[^A-Za-z]/g, "");
+            break;
+          case "address":
+            
+          default:
+            break;
+        }
+      
         setSeller((prevSeller) => ({
           ...prevSeller,
-          [name]: value,
+          [name]: updatedValue,
         }));
       };
+      
     
       const handleSubmit = async (e) => {
         e.preventDefault();
@@ -64,6 +101,7 @@ const AddSeller = () => {
           value={seller.email}
           onChange={handleChange}
           required
+          type='email'
         />
         <TextField
           label="Password"
@@ -104,7 +142,7 @@ const AddSeller = () => {
           value={seller.address}
           onChange={handleChange}
         />
-        <Button variant="contained" type="submit" sx={{backgroundColor:"#2E3B55"}}>
+        <Button variant="contained" type="submit" sx={{backgroundColor:"#8fbc8f "}}>
           Create Customer
         </Button>
       </Box>

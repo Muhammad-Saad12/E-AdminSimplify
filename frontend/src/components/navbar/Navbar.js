@@ -12,10 +12,10 @@ import Menu from '@mui/material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
-import logo from './logo.png'
 import {useNavigate} from 'react-router-dom';
+import { Button } from '@mui/material';
 
-
+//
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
@@ -112,12 +112,12 @@ export default function Navbar() {
     </Menu>
   );
 
-
+//#2E3B55
   return (
     <div data-testid = "navbar">
     <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" style={{ background: '#2E3B55', padding: '0.1rem' }}>
+      <AppBar position="static" style={{ background: '#008000', padding: '0.1rem' }}>
         <Toolbar>
           <Typography
             variant="h6"
@@ -125,7 +125,8 @@ export default function Navbar() {
             component="div"
             sx={{ display: { xs: 'none', sm: 'block' } }}
           >
-            <img src={logo} onClick={handleClickHome} />
+            {/* <img src={logo} onClick={handleClickHome} /> */}
+            <Button onClick={handleClickHome} sx={{color:"white"}}>FAST E-Commerce</Button>
           </Typography>
 
         

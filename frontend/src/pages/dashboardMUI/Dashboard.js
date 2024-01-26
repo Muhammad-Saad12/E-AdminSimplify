@@ -81,7 +81,7 @@ const Dashboard = () => {
             marginBottom={"5rem"}
             fontWeight={700}
             variant="h4"
-            color={"#2E3B55"}
+            color={"#008000"}
           >
             Dashboard
           </Typography>

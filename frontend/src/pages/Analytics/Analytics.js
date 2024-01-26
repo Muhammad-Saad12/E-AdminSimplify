@@ -65,10 +65,10 @@ export default function MediaCard() {
         title="green iguana"
       /> */}
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography gutterBottom variant="h5" component="div" sx={{color:"#008000"}}>
           Fulfilled orders revenue
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="body2" color="text.secondary" >
           {totalSum}
         </Typography>
       </CardContent>
